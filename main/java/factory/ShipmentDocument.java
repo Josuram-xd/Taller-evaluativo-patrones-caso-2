@@ -1,7 +1,7 @@
 package factory;
 
-import model.PlanDeEstiba;
+import model.StowagePlan;
 
 public interface ShipmentDocument {
-    String generate(PlanDeEstiba plan);
+    String generate(StowagePlan plan);
 }

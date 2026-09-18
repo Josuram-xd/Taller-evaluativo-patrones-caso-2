@@ -13,13 +13,25 @@ public class BulkManifestRegistrar extends ManifestRegistrar {
     protected LoadUnit createUnit(String line) {
         String[] parts = splitFields(line, 4);
         String product = parts[1];
-        double tonsDeclared = Double.parseDouble(parts[2]);
-        double humidity = Double.parseDouble(parts[3]);
+
+        double tonsDeclared;
+        double humidity;
+        try {
+            tonsDeclared = Double.parseDouble(parts[2]);
+            humidity = Double.parseDouble(parts[3]);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("tons or humidity is not numeric");
+        }
 
         if (product.isBlank() || tonsDeclared <= 0 || humidity < 0) {
-            throw new IllegalArgumentException("Invalid bulk record");
+            throw new IllegalArgumentException("invalid bulk record");
         }
 
         return new BulkLot(product, tonsDeclared, humidity);
+    }
+
+    @Override
+    protected String registrarName() {
+        return "bulk";
     }
 }

@@ -15,4 +15,9 @@ public record ContainerUnit(String registration, int feet, double netLoad, Strin
     public String description() {
         return "Container " + registration + " (seal " + seal + ")";
     }
+
+    @Override
+    public String extraInfo() {
+        return "(" + feet + " ft)";
+    }
 }

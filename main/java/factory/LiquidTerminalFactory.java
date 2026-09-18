@@ -1,6 +1,5 @@
 package factory;
 
-import model.PlanDeEstiba;
 import model.TerminalType;
 
 public class LiquidTerminalFactory implements TerminalFactory {

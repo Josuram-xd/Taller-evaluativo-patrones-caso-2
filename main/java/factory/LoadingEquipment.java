@@ -1,4 +1,4 @@
-package co.edu.terminal.factory;
+package factory;
 
 public interface LoadingEquipment {
     String name();

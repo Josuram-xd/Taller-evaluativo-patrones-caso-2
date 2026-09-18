@@ -13,7 +13,7 @@ public abstract class ManifestRegistrar {
         for (String line : lines) {
             try {
                 if (line == null || !matches(line)) {
-                    throw new IllegalArgumentException("Line does not match the expected format");
+                    throw new IllegalArgumentException("does not match the " + registrarName() + " registrar");
                 }
                 accepted.add(createUnit(line));
             } catch (RuntimeException e) {
@@ -27,6 +27,8 @@ public abstract class ManifestRegistrar {
     protected abstract boolean matches(String line);
 
     protected abstract LoadUnit createUnit(String line);
+
+    protected abstract String registrarName();
 
     protected static String[] splitFields(String line, int expectedFields) {
         String[] fields = line.split(";", -1);
